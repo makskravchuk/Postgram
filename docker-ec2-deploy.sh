@@ -32,6 +32,6 @@ git pull origin main;
 
 # We can now build and start the containers
 
-docker-compose up -d --build
+docker-compose up --build -d
 
 exit 0;
