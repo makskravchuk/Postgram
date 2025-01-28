@@ -15,13 +15,13 @@ function ProfileDetails(props) {
 
     return (
         <div>
-            <div className="d-flex flex-row border-bottom p-5" data-testid="profile-details">
+            <div className="d-flex flex-row border-bottom p-4" data-testid="profile-details">
                 <Image
                     src={user.avatar}
                     roundedCircle
                     width={120}
                     height={120}
-                    className="me-5 border border-primary border-2"
+                    className="me-4 border border-primary border-2"
                 />
                 <div className="d-flex flex-column justify-content-start align-self-center mt-2">
                     <p className="fs-4 m-0">{user.name}</p>
