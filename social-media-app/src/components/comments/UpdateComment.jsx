@@ -1,4 +1,3 @@
-import {getUser} from "../../hooks/user.actions";
 import React, {useContext, useState} from "react";
 import {Context} from "../Layout";
 import axiosService from "../../helpers/axios";
