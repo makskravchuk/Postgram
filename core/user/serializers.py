@@ -26,8 +26,6 @@ class UserSerializer(AbstractSerializer):
         if not representation['avatar']:
             representation['avatar'] = settings.DEFAULT_AVATAR_URL.format(instance.name)
         else:
-            request = self.context.get("request")
-            representation["avatar"] = request.build_absolute_uri(
-                representation["avatar"]
-            )
+            base_url = getattr(settings, 'BASE_URL', 'http://localhost:8000')
+            representation["avatar"] = urljoin(base_url, representation["avatar"])
         return representation
