@@ -128,7 +128,7 @@ function RegistrationForm() {
             <div className="d-flex justify-content-center">
                 <Button className="align-content-center" variant="primary" type="submit">
                     Submit
-                </Button>data-testid="last-name-field"
+                </Button>
             </div>
         </Form>
     );

@@ -156,10 +156,7 @@ SIMPLE_JWT = {
     'USER_ID_CLAIM': 'user_id',   # Optional, customize if needed
 }
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
-    'http://127.0.0.1:3000',
-]
+CORS_ALLOWED_ORIGINS = os.environ.get("CORS_ALLOW_ORIGINS", default="*").split(',')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'uploads'
