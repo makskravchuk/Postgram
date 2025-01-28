@@ -31,7 +31,8 @@ fi
 git pull origin main;
 
 # We can now build and start the containers
-
+sudo docker-compose down
+sudo docker system prune -af --volumes
 sudo docker-compose up -d --build
 
 exit 0;
