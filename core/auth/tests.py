@@ -47,3 +47,15 @@ class TestAuthenticationViewSet:
         assert data["email"] == response.data['user']["email"]
         assert data["first_name"] == response.data['user']["first_name"]
         assert data["last_name"] == response.data['user']["last_name"]
+
+    def test_logout(self, client, user):
+        data = {
+            'username': user.username,
+            'password': 'test_password',
+        }
+        response = client.post(f"{self.endpoint}login/", data)
+        assert response.status_code == status.HTTP_200_OK
+        client.force_authenticate(user=user)
+        data_refresh = {'refresh': response.data['refresh']}
+        response = client.post(f"{self.endpoint}logout/",data_refresh)
+        assert response.status_code == status.HTTP_204_NO_CONTENT
