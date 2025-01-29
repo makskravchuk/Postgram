@@ -44,7 +44,7 @@
                 });
         }
         function logout() {
-            return axiosService
+            return axios
                 .post(`${baseURL}/auth/logout`, {'refresh': getRefreshToken()})
                 .then(res => {
                     localStorage.removeItem("auth");
