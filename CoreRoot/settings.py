@@ -165,3 +165,12 @@ MEDIA_ROOT = BASE_DIR / 'uploads'
 DEFAULT_AVATAR_URL = 'https://api.dicebear.com/9.x/initials/svg?seed={}'
 
 
+CASHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://redis:6379',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
+    }
+}

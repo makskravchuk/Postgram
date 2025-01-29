@@ -1,3 +1,4 @@
+from django.core.cache import cache
 from django.shortcuts import render
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import status
@@ -51,3 +52,22 @@ class PostViewSet(AbstractViewSet):
         user.remove_like_post(post)
         serializer = self.serializer_class(post)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def list(self, request, *args, **kwargs):
+        post_objects = cache.get("post_objects")
+        if post_objects is None:
+            post_objects = self.filter_queryset(self.get_queryset())
+            cache.set("post_objects", post_objects)
+
+        page = self.paginate_queryset(post_objects)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(post_objects, many=True)
+        return Response(serializer.data)
+
+        page = self.paginate_queryset(post_objects)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)

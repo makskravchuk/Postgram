@@ -9,3 +9,4 @@ django-cors-headers==4.6.0
 pillow==11.1.0
 gunicorn==23.0.0
 python-dotenv==1.0.1
+django-redis==5.4.0
