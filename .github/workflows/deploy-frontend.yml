@@ -34,4 +34,4 @@ jobs:
           aws-region: eu-central-1
 
       - name: Deploy to S3 bucket
-        run: aws s3 sync ./build/ s3://postgram --delete
+        run: aws s3 sync ./dist/ s3://postgram --delete
