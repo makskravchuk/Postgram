@@ -8,6 +8,7 @@ from rest_framework_simplejwt.exceptions import TokenError, InvalidToken
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.views import TokenRefreshView
 
+from core.auth.permissions import UserPermission
 from core.auth.serializers import RegistrationSerializer, LoginSerializer
 from core.user.models import User
 
@@ -51,8 +52,7 @@ class LoginViewSet(viewsets.ViewSet):
         return Response(serializer.validated_data, status=status.HTTP_200_OK)
 
 class LogoutViewSet(viewsets.ViewSet):
-    authentication_classes = ()
-    permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = (UserPermission,)
     http_method_names = ['post']
 
     def create(self, request, *args, **kwargs):
@@ -67,7 +67,7 @@ class LogoutViewSet(viewsets.ViewSet):
         except TokenError:
             raise ValidationError({'detail': 'The refresh token is invalid.'})
 
-        
+
 
 class RefreshViewSet(viewsets.ViewSet, TokenRefreshView):
     permission_classes = (AllowAny,)

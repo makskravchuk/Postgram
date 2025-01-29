@@ -1,6 +1,5 @@
     import {useNavigate} from "react-router-dom";
     import axios from "../helpers/axios";
-    import axiosService from "../helpers/axios";
 
 
     function useUserActions() {
@@ -15,7 +14,7 @@
         };
 
         function edit(data, userId){
-            return axiosService
+            return axios
                 .patch(`/users/${userId}/`, data, {
                     headers: {
                         "Content-Type": "multipart/form-data",

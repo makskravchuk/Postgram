@@ -17,7 +17,7 @@ function NavigationBar() {
                    type: 'danger',
                    message: "Logout failed",
                    show: true,
-                   title: err.data?.detail | "An error occurred",
+                   title: "An error occurred",
                });
            });
     };
