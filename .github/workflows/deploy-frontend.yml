@@ -6,7 +6,7 @@ on:
 
 jobs:
   build-test-deploy:
-    name: Tests
+    name: Build, test, deploy
     runs-on: ubuntu-latest
     defaults:
       run:
