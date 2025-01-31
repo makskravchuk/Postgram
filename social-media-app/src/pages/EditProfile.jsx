@@ -1,6 +1,7 @@
 import Layout from "../components/Layout";
 import {useParams} from "react-router-dom";
 import useSWR from "swr";
+import React from "react";
 import {fetcher} from "../helpers/axios";
 import {Col, Row} from "react-bootstrap";
 import UpdateProfileForm from "../components/profile/UpdateProfileForm";
